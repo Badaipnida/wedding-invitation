@@ -60,7 +60,7 @@ export default function Header() {
         </div>
 
         {/* 텍스트 오버레이 - 상단에 배치하여 옷과 겹치지 않도록 */}
-        <div className="absolute inset-0 flex flex-col items-center justify-start px-4 pt-32 md:pt-16 text-center">
+        <div className="absolute inset-0 flex flex-col items-center justify-start px-4 pt-12 md:pt-16 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

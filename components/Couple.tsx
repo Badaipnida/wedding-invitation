@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Couple() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -43,16 +43,39 @@ export default function Couple() {
               />
             </div>
             <h3 className="font-serif text-base sm:text-lg md:text-2xl font-semibold mb-1 md:mb-2 text-traditional-darkBrown">
-              🇰🇷 {t('couple.groom')}
+              🇰🇷 {language === 'zh-TW' ? t('couple.groom.hanja') : t('couple.groom')}
             </h3>
-            <p className="font-serif text-xs sm:text-sm md:text-base text-traditional-darkBrown mb-1 md:mb-2">
-              {t('couple.groom.hanja')}
-            </p>
+            {language === 'zh-TW' && (
+              <p className="font-serif text-xs sm:text-sm md:text-base text-traditional-darkBrown/70 mb-1 md:mb-2">
+                {t('couple.groom.korean')}
+              </p>
+            )}
+            {language === 'ko' && (
+              <p className="font-serif text-xs sm:text-sm md:text-base text-traditional-darkBrown mb-1 md:mb-2">
+                {t('couple.groom.hanja')}
+              </p>
+            )}
             <p className="text-traditional-brown text-xs sm:text-sm md:text-base mb-1">
-              {t('couple.groom.father')} <span className="font-serif text-traditional-darkBrown">{t('couple.groom.father.hanja')}</span>
+              {language === 'zh-TW' ? (
+                <>
+                  {t('couple.groom.father')} <span className="font-serif text-traditional-darkBrown">{t('couple.groom.father.korean')}</span>
+                </>
+              ) : (
+                <>
+                  {t('couple.groom.father')} <span className="font-serif text-traditional-darkBrown">{t('couple.groom.father.hanja')}</span>
+                </>
+              )}
             </p>
             <p className="text-traditional-brown text-xs sm:text-sm md:text-base">
-              {t('couple.groom.mother')} <span className="font-serif text-traditional-darkBrown">{t('couple.groom.mother.hanja')}</span>
+              {language === 'zh-TW' ? (
+                <>
+                  {t('couple.groom.mother')} <span className="font-serif text-traditional-darkBrown">{t('couple.groom.mother.korean')}</span>
+                </>
+              ) : (
+                <>
+                  {t('couple.groom.mother')} <span className="font-serif text-traditional-darkBrown">{t('couple.groom.mother.hanja')}</span>
+                </>
+              )}
             </p>
           </motion.div>
 
@@ -73,16 +96,39 @@ export default function Couple() {
               />
             </div>
             <h3 className="font-serif text-base sm:text-lg md:text-2xl font-semibold mb-1 md:mb-2 text-traditional-darkBrown">
-              🇹🇼 {t('couple.bride')}
+              🇹🇼 {language === 'zh-TW' ? t('couple.bride.hanja') : t('couple.bride')}
             </h3>
-            <p className="font-serif text-xs sm:text-sm md:text-base text-traditional-darkBrown mb-1 md:mb-2">
-              {t('couple.bride.hanja')}
-            </p>
+            {language === 'zh-TW' && (
+              <p className="font-serif text-xs sm:text-sm md:text-base text-traditional-darkBrown/70 mb-1 md:mb-2">
+                {t('couple.bride.korean')}
+              </p>
+            )}
+            {language === 'ko' && (
+              <p className="font-serif text-xs sm:text-sm md:text-base text-traditional-darkBrown mb-1 md:mb-2">
+                {t('couple.bride.hanja')}
+              </p>
+            )}
             <p className="text-traditional-brown text-xs sm:text-sm md:text-base mb-1">
-              {t('couple.bride.father')} <span className="font-serif text-traditional-darkBrown">{t('couple.bride.father.hanja')}</span>
+              {language === 'zh-TW' ? (
+                <>
+                  {t('couple.bride.father')} <span className="font-serif text-traditional-darkBrown">{t('couple.bride.father.korean')}</span>
+                </>
+              ) : (
+                <>
+                  {t('couple.bride.father')} <span className="font-serif text-traditional-darkBrown">{t('couple.bride.father.hanja')}</span>
+                </>
+              )}
             </p>
             <p className="text-traditional-brown text-xs sm:text-sm md:text-base">
-              {t('couple.bride.mother')} <span className="font-serif text-traditional-darkBrown">{t('couple.bride.mother.hanja')}</span>
+              {language === 'zh-TW' ? (
+                <>
+                  {t('couple.bride.mother')} <span className="font-serif text-traditional-darkBrown">{t('couple.bride.mother.korean')}</span>
+                </>
+              ) : (
+                <>
+                  {t('couple.bride.mother')} <span className="font-serif text-traditional-darkBrown">{t('couple.bride.mother.hanja')}</span>
+                </>
+              )}
             </p>
           </motion.div>
         </div>

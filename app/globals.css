@@ -2,13 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 고운바탕체 웹 폰트 */
+@font-face {
+  font-family: 'GounBatang';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GounBatang';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Bold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
+    --font-serif: 'GounBatang', serif;
+    --font-sans: 'GounBatang', serif;
   }
   
   body {
     @apply bg-traditional-cream text-traditional-darkBrown;
+    font-family: 'GounBatang', serif;
+  }
+  
+  /* font-serif 클래스에 고운바탕체 명시적 적용 */
+  .font-serif {
+    font-family: 'GounBatang', serif !important;
+  }
+  
+  .font-sans {
+    font-family: 'GounBatang', serif !important;
   }
 }
 

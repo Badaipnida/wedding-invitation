@@ -19,8 +19,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        korean: ['Noto Serif KR', 'serif'],
-        sans: ['Noto Sans KR', 'sans-serif'],
+        serif: ['GounBatang', 'serif'],
+        sans: ['GounBatang', 'serif'],
+        korean: ['GounBatang', 'serif'],
       },
     },
   },

@@ -25,20 +25,8 @@ export default function Gallery() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="py-16 bg-traditional-paper/50"
+      className="pt-8 pb-16 bg-traditional-paper/50"
     >
-      <div className="max-w-4xl mx-auto px-4 mb-12">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="font-serif text-2xl md:text-3xl text-center text-traditional-darkBrown"
-        >
-          {t('gallery.title')}
-        </motion.h2>
-      </div>
-      
       {/* 3x3 그리드 컨테이너 */}
       <div className="max-w-2xl mx-auto px-4">
         <div className="grid grid-cols-3 gap-3 md:gap-4">
@@ -151,7 +139,7 @@ export default function Gallery() {
               {/* 닫기 버튼 */}
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+                className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-black hover:bg-white transition-colors z-10"
                 aria-label="닫기"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

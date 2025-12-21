@@ -51,19 +51,19 @@ export default function Map() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-6 space-y-3 text-sm text-traditional-brown"
+          className="mt-6 space-y-3 text-sm text-traditional-brown font-serif text-center"
         >
-          <div className="flex items-start">
-            <span className="font-semibold min-w-20">{t('map.transport.subway')}</span>
-            <span>{t('map.subway.info')}</span>
+          <div>
+            <span className="font-semibold">{t('map.transport.subway')}</span>
+            <span className="block mt-1">{t('map.subway.info')}</span>
           </div>
-          <div className="flex items-start">
-            <span className="font-semibold min-w-20">{t('map.transport.bus')}</span>
-            <span>{t('map.bus.info')}</span>
+          <div>
+            <span className="font-semibold">{t('map.transport.bus')}</span>
+            <span className="block mt-1 whitespace-pre-line">{t('map.bus.info')}</span>
           </div>
-          <div className="flex items-start">
-            <span className="font-semibold min-w-20">{t('map.transport.car')}</span>
-            <span>{t('map.car.info')}</span>
+          <div>
+            <span className="font-semibold">{t('map.transport.car')}</span>
+            <span className="block mt-1">{t('map.car.info')}</span>
           </div>
         </motion.div>
       </div>

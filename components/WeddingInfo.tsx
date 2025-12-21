@@ -35,12 +35,8 @@ export default function WeddingInfo() {
           >
             <div className="mb-4">
               <p className="font-serif text-traditional-brown text-sm mb-2">{t('wedding.date')}</p>
-              <p className="font-serif text-xl md:text-2xl font-semibold text-traditional-darkBrown mb-3">
+              <p className="font-serif text-xl md:text-2xl font-semibold text-traditional-darkBrown mb-4">
                 {t('wedding.date.value')}
-              </p>
-              <p className="font-serif text-traditional-brown text-sm mb-2">{t('wedding.ceremony.start')}</p>
-              <p className="font-serif text-3xl md:text-4xl font-bold text-traditional-gold mb-4">
-                {t('wedding.ceremony.time')}
               </p>
               <div className="mt-4 space-y-2 text-center">
                 <p className="font-serif text-sm md:text-base text-traditional-darkBrown">

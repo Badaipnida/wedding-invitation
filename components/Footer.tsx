@@ -39,7 +39,7 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
-          className="text-traditional-brown text-sm"
+          className="text-traditional-brown text-sm whitespace-pre-line"
         >
           {t('footer.copyright')}
         </motion.p>

@@ -44,7 +44,7 @@ const translations = {
     // WeddingInfo
     'wedding.title': '예식 안내',
     'wedding.date': '예식일시',
-    'wedding.date.value': '2026년 3월 21일(토)',
+    'wedding.date.value': '2026년 3월 21일(토) 오후 5시',
     'wedding.ceremony.start': '혼례 시작',
     'wedding.ceremony.time': '오후 5시',
     'wedding.ceremony.family': '가족 • 친지 입장',
@@ -65,12 +65,12 @@ const translations = {
     'map.transport.bus': '버스',
     'map.transport.car': '자가용',
     'map.subway.info': '3,4호선 충무로역 3번출구 도보 2분',
-    'map.bus.info': '104, 105, 140, 263, 421, 507, 604, 7011번 남산골한옥마을, 한국의집 하차',
+    'map.bus.info': '104, 105, 140, 263, 421, 507, 604, 7011번\n남산골한옥마을, 한국의집 하차',
     'map.car.info': '지하 1층 주차장 60대 수용 가능',
     
     // Footer
     'footer.thanks': '본 결혼식은 한국 전통 혼례로 진행됩니다.\n따뜻한 마음으로 함께해주시면\n감사하겠습니다.',
-    'footer.copyright': '2026 Wedding Invitation, Vibe Coded by Jongseok',
+    'footer.copyright': 'Desinged by Kaku\nVibe Coded & Made by Soku',
   },
   'zh-TW': {
     // Header
@@ -109,7 +109,7 @@ const translations = {
     // WeddingInfo
     'wedding.title': '婚禮資訊',
     'wedding.date': '婚禮時間',
-    'wedding.date.value': '2026年 03月 21日(六)',
+    'wedding.date.value': '2026年 03月 21日(六) 晚間5點開宴 (韓國時間)',
     'wedding.ceremony.start': '婚禮開始',
     'wedding.ceremony.time': '晚間5點開宴 (韓國時間)',
     'wedding.ceremony.family': '家人親友入場',
@@ -136,7 +136,7 @@ const translations = {
     
     // Footer
     'footer.thanks': '本次宴會將以韓國傳統婚禮形式舉行\n您只要帶著好心情出門\n享受宴席平安回家就好',
-    'footer.copyright': '2026 Wedding Invitation, Vibe Coded by Jongseok',
+    'footer.copyright': 'Desinged by Kaku\nVibe Coded & Made by Soku',
   },
 }
 

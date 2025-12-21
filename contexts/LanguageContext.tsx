@@ -119,6 +119,7 @@ const translations = {
     'wedding.location': '婚禮地點',
     'wedding.location.name': '韓國之家 (KOREA HOUSE)',
     'wedding.location.address': '首爾市中區退溪路36街10 韓國之家',
+    'wedding.location.address.english': '10, Toegye-ro 36gil, Jung-gu, Seoul,\nA 2-minute walk from Exit 3 of Chungmuro Station (Lines 3 and 4).',
     'wedding.location.transport': '地鐵3,4號線 忠武路站 3號出口 步行2分鐘',
     'wedding.transport.subway': '地鐵',
     'wedding.transport.bus': '公車',
@@ -134,7 +135,7 @@ const translations = {
     'map.car.info': '地下1層 停車場 可容納60輛',
     
     // Footer
-    'footer.thanks': '本場婚禮將以韓國傳統婚禮進行。\n若您能以溫暖的心與我們一同參與\n我們將不勝感激。',
+    'footer.thanks': '本次宴會將以韓國傳統婚禮形式舉行\n您只要帶著好心情出門\n享受宴席平安回家就好',
     'footer.copyright': '2026 Wedding Invitation, Vibe Coded by Jongseok',
   },
 }

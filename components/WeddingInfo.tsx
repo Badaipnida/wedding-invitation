@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function WeddingInfo() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -74,6 +74,11 @@ export default function WeddingInfo() {
               <p className="text-traditional-brown text-sm mt-2">
                 {t('wedding.location.transport')}
               </p>
+              {language === 'zh-TW' && (
+                <p className="text-traditional-brown text-sm mt-3 font-sans whitespace-pre-line">
+                  {t('wedding.location.address.english')}
+                </p>
+              )}
             </div>
           </motion.div>
         </div>

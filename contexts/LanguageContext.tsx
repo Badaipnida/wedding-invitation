@@ -69,13 +69,13 @@ const translations = {
     'map.car.info': '지하 1층 주차장 60대 수용 가능',
     
     // Footer
-    'footer.thanks': '참석해 주셔서 감사합니다',
+    'footer.thanks': '본 결혼식은 한국 전통 혼례로 진행됩니다.\n따뜻한 마음으로 함께해주시면\n감사하겠습니다.',
     'footer.copyright': '2026 Wedding Invitation, Vibe Coded by Jongseok',
   },
   'zh-TW': {
     // Header
-    'header.title': '我們結婚了',
-    'header.subtitle': '兩個人成為一體的珍貴日子\n誠摯邀請您前來祝福\n我們將不勝感激',
+    'header.title': '我們結婚啦',
+    'header.subtitle': '誠心邀請您蒞臨這場宴會\n對我們而言，您的祝福\n勝過世上所有珍貴的禮物',
     
     // Greeting
     'greeting.text': '感謝一路陪伴我們成長的你們\n我們決定牽起彼此的手，約定走在同一條路上\n\n未來的路，也許有顛簸、也許有些遙遠\n但有了大家的祝福化作小小燈火\n\n為我們照亮前方，給予我們向前的勇氣\n這份祝福，我們將會放在心裡，珍惜一輩子。',
@@ -134,7 +134,7 @@ const translations = {
     'map.car.info': '地下1層 停車場 可容納60輛',
     
     // Footer
-    'footer.thanks': '感謝您的蒞臨',
+    'footer.thanks': '本場婚禮將以韓國傳統婚禮進行。\n若您能以溫暖的心與我們一同參與\n我們將不勝感激。',
     'footer.copyright': '2026 Wedding Invitation, Vibe Coded by Jongseok',
   },
 }

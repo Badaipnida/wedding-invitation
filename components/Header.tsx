@@ -6,7 +6,7 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 
 export default function Header() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   return (
     <motion.header
       initial={{ opacity: 0 }}
@@ -102,7 +102,9 @@ export default function Header() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
-            className="text-white text-sm md:text-base lg:text-lg drop-shadow-md leading-relaxed whitespace-pre-line"
+            className={`text-white text-sm md:text-base lg:text-lg drop-shadow-md leading-relaxed whitespace-pre-line ${
+              language === 'zh-TW' ? 'font-sans' : ''
+            }`}
           >
             {t('header.subtitle')}
           </motion.p>

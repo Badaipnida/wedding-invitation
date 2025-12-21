@@ -30,7 +30,7 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="font-serif text-lg text-traditional-darkBrown mb-4"
+          className="font-serif text-lg text-traditional-darkBrown mb-4 whitespace-pre-line"
         >
           {t('footer.thanks')}
         </motion.p>

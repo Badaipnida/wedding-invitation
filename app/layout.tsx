@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: 'Wedding Invitation',
     images: [
       {
-        url: '/main.jpg',
+        url: 'https://wedding-kakusoku.vercel.app/og-image.jpg',
         width: 1200,
         height: 630,
         alt: '이종석 & 곽유정 결혼식 초대장',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '이종석🤵🏼‍♂️ & 곽유정👰‍♀️ 결혼합니다',
     description: '2026년 3월 21일(토) 오후 5시\n한국의 집 (KOREA HOUSE)\n이종석과 곽유정의 결혼식에 초대합니다',
-    images: ['/main.jpg'],
+    images: ['https://wedding-kakusoku.vercel.app/og-image.jpg'],
   },
 }
 

@@ -3,11 +3,15 @@
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
 
-export default function LanguageSwitcher() {
+interface LanguageSwitcherProps {
+  absolute?: boolean
+}
+
+export default function LanguageSwitcher({ absolute = false }: LanguageSwitcherProps) {
   const { language, setLanguage } = useLanguage()
 
   return (
-    <div className="fixed top-4 right-4 z-50 flex gap-2">
+    <div className={`${absolute ? 'absolute' : 'fixed'} top-4 right-4 md:right-4 z-50 flex gap-2`}>
       <motion.button
         onClick={() => setLanguage('ko')}
         whileHover={{ scale: 1.1 }}

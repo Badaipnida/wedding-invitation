@@ -13,7 +13,6 @@ import LanguageSwitcher from '@/components/LanguageSwitcher'
 export default function Home() {
   return (
     <main className="min-h-screen hanji-texture">
-      <LanguageSwitcher />
       <Header />
       <Greeting />
       <Couple />

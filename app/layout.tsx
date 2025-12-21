@@ -16,8 +16,8 @@ const notoSans = Noto_Sans_KR({
 })
 
 export const metadata: Metadata = {
-  title: '결혼합니다',
-  description: '모바일 청첩장',
+  title: '이종석🤵🏼‍♂️ & 곽유정👰‍♀️ 결혼합니다',
+  description: '2026년 3월 21일, 이종석과 곽유정의 결혼식에 초대합니다',
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
 }
 

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 
 export default function Header() {
   const { t } = useLanguage()
@@ -15,6 +16,11 @@ export default function Header() {
     >
       {/* PC에서는 신랑/신부 섹션과 동일한 폭, 모바일에서는 전체 폭 */}
       <div className="relative w-full max-w-4xl mx-auto h-full bg-transparent">
+        {/* 언어 전환 버튼 - 메인 이미지 컨테이너 내부에 배치 */}
+        <div className="absolute top-4 right-4 z-50">
+          <LanguageSwitcher absolute />
+        </div>
+        
         {/* 메인 이미지 */}
         <div className="relative w-full h-full bg-transparent">
           <Image

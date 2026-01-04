@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useState, ReactNode } from 'react'
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 
 type Language = 'ko' | 'zh-TW'
 
@@ -154,6 +154,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations['ko']] || key
   }
+
+  // 언어 변경 시 HTML lang 속성 업데이트
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = language === 'zh-TW' ? 'zh-TW' : 'ko'
+    }
+  }, [language])
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>

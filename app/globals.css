@@ -37,6 +37,25 @@
   .font-sans {
     font-family: 'GounBatang', serif !important;
   }
+  
+  /* 대만어(중국어 번체) 폰트 적용 - Source Han Serif */
+  /* Typekit 폰트 패밀리 이름은 일반적으로 소문자와 하이픈으로 구성됩니다 */
+  html[lang="zh-TW"] .font-sans,
+  html[lang="zh-TW"] .font-serif {
+    font-family: 'source-han-serif-tc', 'source-han-serif', 'Source Han Serif TC', 'Source Han Serif', serif !important;
+  }
+  
+  /* Typekit 폰트가 로드된 후 적용 */
+  html.wf-active[lang="zh-TW"] .font-sans,
+  html.wf-active[lang="zh-TW"] .font-serif {
+    font-family: 'source-han-serif-tc', 'source-han-serif', 'Source Han Serif TC', 'Source Han Serif', serif !important;
+  }
+  
+  /* 대만어일 때 body와 모든 텍스트에도 적용 */
+  html[lang="zh-TW"] body,
+  html.wf-active[lang="zh-TW"] body {
+    font-family: 'source-han-serif-tc', 'source-han-serif', 'Source Han Serif TC', 'Source Han Serif', serif;
+  }
 }
 
 @layer utilities {

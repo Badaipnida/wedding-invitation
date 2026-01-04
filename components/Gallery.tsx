@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 // 갤러리 이미지 (1~18)
@@ -15,9 +15,124 @@ export default function Gallery() {
   const { t } = useLanguage()
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [showMore, setShowMore] = useState(false)
+  
+  // 스와이프 네비게이션을 위한 상태
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchEnd, setTouchEnd] = useState<number | null>(null)
+  const [isDragging, setIsDragging] = useState(false)
+  const imageContainerRef = useRef<HTMLDivElement>(null)
+  
+  // 최소 스와이프 거리 (픽셀)
+  const minSwipeDistance = 50
 
   // 처음에는 1~9만 보이고, 더 보기 클릭 시 10~18도 표시
   const displayedImages = showMore ? allGalleryImages : allGalleryImages.slice(0, 9)
+
+  // 이전 이미지로 이동
+  const goToPrevious = useCallback(() => {
+    setSelectedImage((current) => {
+      if (current && current > 1) {
+        return current - 1
+      } else if (current === 1) {
+        return 18 // 마지막 이미지로 순환
+      }
+      return current
+    })
+  }, [])
+
+  // 다음 이미지로 이동
+  const goToNext = useCallback(() => {
+    setSelectedImage((current) => {
+      if (current && current < 18) {
+        return current + 1
+      } else if (current === 18) {
+        return 1 // 첫 이미지로 순환
+      }
+      return current
+    })
+  }, [])
+
+  // 터치 시작
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  // 터치 이동
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  // 터치 종료 및 스와이프 처리
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+
+    if (isLeftSwipe) {
+      goToNext()
+    }
+    if (isRightSwipe) {
+      goToPrevious()
+    }
+  }
+
+  // 마우스 드래그 처리
+  const onMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(false)
+    setTouchStart(e.clientX)
+  }
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (touchStart !== null) {
+      setIsDragging(true)
+      setTouchEnd(e.clientX)
+    }
+  }
+
+  const onMouseUp = () => {
+    if (!touchStart || !touchEnd || !isDragging) {
+      setTouchStart(null)
+      setTouchEnd(null)
+      setIsDragging(false)
+      return
+    }
+
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+
+    if (isLeftSwipe) {
+      goToNext()
+    }
+    if (isRightSwipe) {
+      goToPrevious()
+    }
+
+    setTouchStart(null)
+    setTouchEnd(null)
+    setIsDragging(false)
+  }
+
+  // 키보드 화살표 키로 네비게이션
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedImage) return
+
+      if (e.key === 'ArrowLeft') {
+        goToPrevious()
+      } else if (e.key === 'ArrowRight') {
+        goToNext()
+      } else if (e.key === 'Escape') {
+        setSelectedImage(null)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [selectedImage, goToPrevious, goToNext])
 
   return (
     <motion.section
@@ -113,10 +228,24 @@ export default function Gallery() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.3 }}
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                if (!isDragging) {
+                  e.stopPropagation()
+                }
+              }}
               className="relative w-full max-w-4xl max-h-[90vh] bg-traditional-beige rounded-lg overflow-hidden shadow-2xl"
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+              onMouseDown={onMouseDown}
+              onMouseMove={onMouseMove}
+              onMouseUp={onMouseUp}
+              onMouseLeave={onMouseUp}
             >
-              <div className="relative w-full h-full min-h-[50vh] flex items-center justify-center">
+              <div 
+                ref={imageContainerRef}
+                className="relative w-full h-full min-h-[50vh] flex items-center justify-center select-none"
+              >
                 {selectedImage && selectedImage >= 1 && selectedImage <= 18 ? (
                   <Image
                     key={selectedImage}
@@ -126,6 +255,7 @@ export default function Gallery() {
                     className="object-contain"
                     sizes="90vw"
                     unoptimized={false}
+                    draggable={false}
                   />
                 ) : (
                   <div className="w-full h-full bg-traditional-beige flex items-center justify-center">
@@ -135,6 +265,34 @@ export default function Gallery() {
                   </div>
                 )}
               </div>
+              
+              {/* 이전 버튼 */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  goToPrevious()
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-traditional-darkBrown hover:bg-white transition-all duration-300 hover:scale-110 active:scale-95 z-10 shadow-lg"
+                aria-label="이전 이미지"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              {/* 다음 버튼 */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  goToNext()
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-traditional-darkBrown hover:bg-white transition-all duration-300 hover:scale-110 active:scale-95 z-10 shadow-lg"
+                aria-label="다음 이미지"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
               
               {/* 닫기 버튼 */}
               <button
@@ -146,6 +304,11 @@ export default function Gallery() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
+
+              {/* 이미지 인디케이터 */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-sm rounded-full px-4 py-2 text-white text-sm font-serif z-10">
+                {selectedImage} / 18
+              </div>
             </motion.div>
           </motion.div>
         )}

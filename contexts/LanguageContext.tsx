@@ -35,6 +35,10 @@ const translations = {
     'couple.bride.father.hanja': '郭世杰',
     'couple.bride.mother': '어머니 임수연',
     'couple.bride.mother.hanja': '林秀燕',
+    'couple.groom.phone': '010-9520-1088',
+    'couple.bride.phone': '010-4684-0829',
+    'contact.call': '전화 걸기',
+    'contact.close': '닫기',
     
     // Gallery
     'gallery.title': '함께한 시간들',
@@ -100,6 +104,10 @@ const translations = {
     'couple.bride.mother': '母親 林秀燕',
     'couple.bride.mother.hanja': '林秀燕',
     'couple.bride.mother.korean': '임수연',
+    'couple.groom.phone': '010-9520-1088',
+    'couple.bride.phone': '010-4684-0829',
+    'contact.call': '撥打電話',
+    'contact.close': '關閉',
     
     // Gallery
     'gallery.title': '一起的時光',

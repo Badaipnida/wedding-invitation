@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function WeddingInfo() {
@@ -61,9 +62,19 @@ export default function WeddingInfo() {
           >
             <div className="mb-4">
               <p className="font-serif text-traditional-brown text-sm mb-2">{t('wedding.location')}</p>
-              <p className="font-serif text-xl md:text-2xl font-semibold text-traditional-darkBrown mb-2">
+              <p className="font-serif text-xl md:text-2xl font-semibold text-traditional-darkBrown mb-4">
                 {t('wedding.location.name')}
               </p>
+              <div className="mb-4 flex justify-center">
+                <Image
+                  src="/koreahouse.gif"
+                  alt="한국의 집"
+                  width={400}
+                  height={300}
+                  className="rounded-lg shadow-md border-2 border-traditional-gold/20 max-w-full h-auto"
+                  unoptimized
+                />
+              </div>
               <p className="font-serif text-traditional-brown text-base">
                 {t('wedding.location.address')}
               </p>

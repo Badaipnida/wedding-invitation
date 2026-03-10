@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import { createContext, useContext, useState, ReactNode } from 'react'
 
 type Language = 'ko' | 'zh-TW'
 
@@ -35,10 +35,6 @@ const translations = {
     'couple.bride.father.hanja': '郭世杰',
     'couple.bride.mother': '어머니 임수연',
     'couple.bride.mother.hanja': '林秀燕',
-    'couple.groom.phone': '010-9520-1088',
-    'couple.bride.phone': '010-4684-0829',
-    'contact.call': '전화 걸기',
-    'contact.close': '닫기',
     
     // Gallery
     'gallery.title': '함께한 시간들',
@@ -49,6 +45,10 @@ const translations = {
     'wedding.title': '예식 안내',
     'wedding.date': '예식일시',
     'wedding.date.value': '2026년 3월 21일(토) 오후 5시',
+    'wedding.ceremony.entry': '입장 시작',
+    'wedding.ceremony.entry.time': '오후 4시 ~',
+    'wedding.ceremony.note':
+      '설레는 마음으로 기다리겠습니다.\n\n예식 당일 광화문 주변 공연으로 교통 혼잡이 우려되오니, 오시는 길 부디 살피어 안전하게 걸음 해주시길 부탁드립니다.\n\n일찍 오시는 분들을 위해 작은 웰컴 드링크와 소소한 포토 부스를 마련해 두었습니다. 저희의 첫 시작을 기다리는 시간이 즐거운 추억으로 채워지면 좋겠습니다.',
     'wedding.ceremony.start': '혼례 시작',
     'wedding.ceremony.time': '오후 5시',
     'wedding.ceremony.family': '가족 • 친지 입장',
@@ -104,10 +104,6 @@ const translations = {
     'couple.bride.mother': '母親 林秀燕',
     'couple.bride.mother.hanja': '林秀燕',
     'couple.bride.mother.korean': '임수연',
-    'couple.groom.phone': '010-9520-1088',
-    'couple.bride.phone': '010-4684-0829',
-    'contact.call': '撥打電話',
-    'contact.close': '關閉',
     
     // Gallery
     'gallery.title': '一起的時光',
@@ -118,6 +114,10 @@ const translations = {
     'wedding.title': '婚禮資訊',
     'wedding.date': '婚禮時間',
     'wedding.date.value': '2026年 03月 21日(六) 晚間5點開宴 (韓國時間)',
+    'wedding.ceremony.entry': '賓客入場',
+    'wedding.ceremony.entry.time': '下午4點開始',
+    'wedding.ceremony.note':
+      '我們將懷著雀躍的心情等待您的到來。\n\n婚禮當日因光化門附近有演出活動，周邊交通恐較為壅塞，懇請您多加留意行程與路線，平安前來、順利返家。\n\n我們也為提早抵達的賓客準備了簡單的迎賓飲品與小小拍照區，期盼等待婚禮開始的時光，也能成為美好的回憶 :)',
     'wedding.ceremony.start': '婚禮開始',
     'wedding.ceremony.time': '晚間5點開宴 (韓國時間)',
     'wedding.ceremony.family': '家人親友入場',
@@ -154,13 +154,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations['ko']] || key
   }
-
-  // 언어 변경 시 HTML lang 속성 업데이트
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      document.documentElement.lang = language === 'zh-TW' ? 'zh-TW' : 'ko'
-    }
-  }, [language])
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>

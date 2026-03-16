@@ -1,11 +1,13 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function WeddingInfo() {
   const { t, language } = useLanguage()
+  const [showOrderImage, setShowOrderImage] = useState(false)
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -91,6 +93,78 @@ export default function WeddingInfo() {
               </div>
             </div>
           </motion.div>
+
+          {/* 예식 순서 이미지 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="text-center bg-traditional-paper rounded-lg p-6 shadow-sm border border-traditional-gold/20"
+          >
+            <p className="font-serif text-xl md:text-2xl font-semibold text-traditional-darkBrown mb-4">
+              {t('wedding.order.title')}
+            </p>
+            <div className="relative w-full max-w-2xl mx-auto h-auto">
+              <button
+                type="button"
+                onClick={() => setShowOrderImage(true)}
+                className="relative w-full aspect-[3/4] md:aspect-[3/4] rounded-lg overflow-hidden shadow-md border border-traditional-gold/30 bg-white hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+                aria-label="예식 순서 이미지 확대"
+              >
+                <Image
+                  src="/wedding-order.png"
+                  alt="예식 순서 안내"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 90vw, 70vw"
+                  priority={false}
+                />
+              </button>
+            </div>
+          </motion.div>
+          
+          {/* 예식 순서 확대 모달 */}
+          <AnimatePresence>
+            {showOrderImage && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setShowOrderImage(false)}
+                className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+              >
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.9, opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="relative w-full max-w-3xl max-h-[90vh] bg-traditional-paper rounded-lg overflow-hidden shadow-2xl"
+                >
+                  <div className="relative w-full h-full min-h-[60vh] flex items-center justify-center">
+                    <Image
+                      src="/wedding-order.png"
+                      alt="예식 순서 안내 확대"
+                      fill
+                      className="object-contain"
+                      sizes="90vw"
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShowOrderImage(false)}
+                    className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-black hover:bg-white transition-colors z-10"
+                    aria-label="닫기"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </motion.section>

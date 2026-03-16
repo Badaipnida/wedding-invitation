@@ -62,6 +62,7 @@ const translations = {
     'wedding.transport.subway': '지하철',
     'wedding.transport.bus': '버스',
     'wedding.transport.car': '자가용',
+    'wedding.order.title': '예식 순서',
     
     // Map
     'map.title': '오시는 길',
@@ -132,6 +133,7 @@ const translations = {
     'wedding.transport.subway': '地鐵',
     'wedding.transport.bus': '公車',
     'wedding.transport.car': '自用車',
+    'wedding.order.title': '婚禮流程',
     
     // Map
     'map.title': '交通方式',
